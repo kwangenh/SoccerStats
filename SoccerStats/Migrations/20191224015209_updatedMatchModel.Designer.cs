@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoccerStats.Models;
 
 namespace SoccerStats.Migrations
 {
     [DbContext(typeof(SoccerStatsContext))]
-    partial class SoccerStatsContextModelSnapshot : ModelSnapshot
+    [Migration("20191224015209_updatedMatchModel")]
+    partial class updatedMatchModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

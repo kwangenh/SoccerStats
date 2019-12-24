@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoccerStats.Models;
 
 namespace SoccerStats.Migrations
 {
     [DbContext(typeof(SoccerStatsContext))]
-    partial class SoccerStatsContextModelSnapshot : ModelSnapshot
+    [Migration("20191224013741_UpdateTeamModel")]
+    partial class UpdateTeamModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,10 +31,16 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Away_Goals")
                         .HasColumnType("int");
 
+                    b.Property<int>("Away_Team_Id")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Home_Goals")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Home_Team_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Match_No")
@@ -56,6 +64,9 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Condeding_GK_PID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MatchId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Match_Id")
                         .HasColumnType("int");
 
@@ -67,7 +78,7 @@ namespace SoccerStats.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Match_Id");
+                    b.HasIndex("MatchId");
 
                     b.ToTable("Match_Goals");
                 });
@@ -105,6 +116,9 @@ namespace SoccerStats.Migrations
                     b.Property<int>("End_Time")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MatchId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Match_Id")
                         .HasColumnType("int");
 
@@ -116,7 +130,7 @@ namespace SoccerStats.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Match_Id");
+                    b.HasIndex("MatchId");
 
                     b.ToTable("Player_Match_Time");
                 });
@@ -140,13 +154,13 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Losses")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MatchId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Points")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Team_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Ties")
@@ -157,7 +171,7 @@ namespace SoccerStats.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Team_Id");
+                    b.HasIndex("MatchId");
 
                     b.ToTable("Teams");
                 });
@@ -166,9 +180,7 @@ namespace SoccerStats.Migrations
                 {
                     b.HasOne("SoccerStats.Models.Match", null)
                         .WithMany("Goals")
-                        .HasForeignKey("Match_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MatchId");
                 });
 
             modelBuilder.Entity("SoccerStats.Models.Player", b =>
@@ -184,16 +196,14 @@ namespace SoccerStats.Migrations
                 {
                     b.HasOne("SoccerStats.Models.Match", null)
                         .WithMany("Players")
-                        .HasForeignKey("Match_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MatchId");
                 });
 
             modelBuilder.Entity("SoccerStats.Models.Team", b =>
                 {
                     b.HasOne("SoccerStats.Models.Match", null)
                         .WithMany("Teams")
-                        .HasForeignKey("Team_Id");
+                        .HasForeignKey("MatchId");
                 });
 #pragma warning restore 612, 618
         }

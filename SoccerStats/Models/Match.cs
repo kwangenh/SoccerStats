@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,18 +11,17 @@ namespace SoccerStats.Models
     {
         [Key]
         public int Id { get; set; }
-        public int Home_Team_Id { get; set; }
-        public int Away_Team_Id { get; set; }
         public int Home_Goals { get; set; }
         public int Away_Goals { get; set; }
         public DateTime Date { get; set; }
         public int Match_No { get; set; }
-
-        public ICollection<MatchGoal> Goals { get; set; }
-
-        public ICollection<PlayerMatchTime> Players { get; set; }
+        [ForeignKey("Team_Id")]
         public ICollection<Team> Teams { get; set; }
 
+        [ForeignKey("Match_Id")]
+        public ICollection<MatchGoal> Goals { get; set; }
 
+        [ForeignKey("Match_Id")]
+        public ICollection<PlayerMatchTime> Players { get; set; }
     }
 }
