@@ -52,6 +52,13 @@ namespace SoccerStats
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
                 logger.LogInformation("Called the app.UseEndPoints()");
 
                 endpoints.MapGet("/", async context =>

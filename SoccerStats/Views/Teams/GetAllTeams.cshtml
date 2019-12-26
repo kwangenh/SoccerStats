@@ -1,0 +1,17 @@
+﻿@model IEnumerable<SoccerStats.Models.Team>
+@{    
+    ViewData["Title"] = "GetAllTeams";
+}
+
+<h1>GetAllTeams</h1>
+
+<div ="form-horizontal">
+    @foreach (var team in Model)
+    {
+        <div ="form-group">
+            <p>@team.Name </p>
+
+            <p>@team.Points </p>
+        </div>
+        }
+</div>

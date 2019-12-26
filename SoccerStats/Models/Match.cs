@@ -15,6 +15,7 @@ namespace SoccerStats.Models
         public int Away_Goals { get; set; }
         public DateTime Date { get; set; }
         public int Match_No { get; set; }
+            
         [ForeignKey("Team_Id")]
         public ICollection<Team> Teams { get; set; }
 

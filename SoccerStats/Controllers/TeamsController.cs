@@ -20,9 +20,14 @@ namespace SoccerStats.Controllers
             return View();
         }
 
-        public IEnumerable<Team> GetAllTeams()
+        /*public IEnumerable<Team> GetAllTeams()
         {
             return _teamRepository.GetAllTeams();
+        }*/
+
+        public  ViewResult GetAllTeams()
+        {
+            return View(_teamRepository.GetAllTeams());
         }
 
         public Team Team(int teamId)
