@@ -21,6 +21,22 @@ namespace SoccerStats.Controllers
             _matchRepository = matchRepository;
         }
 
+        public ViewResult Teams()
+        {
+            return View();
+        }
+
+        public ViewResult Players()
+        {
+            return View();
+        }
+
+        public ViewResult Matches()
+        {
+            return View();
+        }
+
+
         public Team CreateTeam(Team thisTeam)
         {
             _teamRepository.CreateTeam(thisTeam);
