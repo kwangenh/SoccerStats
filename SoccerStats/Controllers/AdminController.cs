@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SoccerStats.Models;
 using SoccerStats.Contracts;
+using SoccerStats.ViewModels;
 
 namespace SoccerStats.Controllers
 {
@@ -37,10 +38,13 @@ namespace SoccerStats.Controllers
         }
 
 
-        public Team CreateTeam(Team thisTeam)
+        public AdminCreateTeamsViewModel CreateTeam(AdminCreateTeamsViewModel thisTeamViewModel)
         {
+            Team thisTeam = new Team();
             _teamRepository.CreateTeam(thisTeam);
-            return thisTeam;
+            //return thisTeam;
+            // need to create utility to convert AdminCreateTeamsViewModel.cs --> Team.cs
+            return thisTeamViewModel;
         }
 
         public Team DeleteTeam(int teamId)

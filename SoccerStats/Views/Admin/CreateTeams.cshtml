@@ -1,0 +1,79 @@
+﻿@model SoccerStats.ViewModels.AdminCreateTeamsViewModel
+
+@{
+    ViewData["Title"] = "Teams";
+}
+
+<h1>Teams</h1>
+
+<form method="post" asp-controller="Admin" asp-action="CreateTeam ">
+    <div class="row">
+        <div class="col-3">            
+        </div>
+        <div class="col-9">
+            <ul data-role="listview">
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control form-control-sm" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Games_Played"></label>
+                        <input asp-for="Games_Played" class="form-control form-control-sm" />
+                        <span asp-validation-for="Games_Played"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Points"></label>
+                        <input asp-for="Points" class="form-control form-control-sm" />
+                        <span asp-validation-for="Points"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Wins"></label>
+                        <input asp-for="Wins" class="form-control form-control-sm" />
+                        <span asp-validation-for="Wins"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Ties"></label>
+                        <input asp-for="Ties" class="form-control form-control-sm" />
+                        <span asp-validation-for="Ties"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Losses"></label>
+                        <input asp-for="Losses" class="form-control form-control-sm" />
+                        <span asp-validation-for="Losses"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Goals_For"></label>
+                        <input asp-for="Goals_For" class="form-control form-control-sm" />
+                        <span asp-validation-for="Goals_For"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Goals_Against"></label>
+                        <input asp-for="Goals_Against" class="form-control form-control-sm" />
+                        <span asp-validation-for="Goals_Against"></span>
+                    </div>
+                </li>
+            </ul>
+            <p class="actions">                
+                <button class="btn btn-danger order-button">Save Team</button>
+            </p>
+        </div>
+    </div>
+</form>
+
+
