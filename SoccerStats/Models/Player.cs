@@ -10,6 +10,8 @@ namespace SoccerStats.Models
     {
         [Key]
         public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime Birthday { get; set; }
         //need to set foreign key here
         public int Team_Id { get; set; }
         public int Goals { get; set; }
