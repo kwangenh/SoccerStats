@@ -41,7 +41,20 @@ namespace SoccerStats.Controllers
         public AdminCreateTeamsViewModel CreateTeam(AdminCreateTeamsViewModel thisTeamViewModel)
         {
             // is this even good?
-            Team thisTeam = thisTeamViewModel.CreateTeamModel(thisTeamViewModel);
+
+            // should i just rename AdminCreatTeamsViewModel --> AdminViewModels instead and use same viewmodel thorughout page?
+            // using constructor each time for each unique viewmodel will get cumbersone
+            //Team thisTeam = thisTeamViewModel.CreateTeamModel(thisTeamViewModel);
+            Team thisTeam = new Team(
+                thisTeamViewModel.Name,
+                thisTeamViewModel.Points,
+                thisTeamViewModel.Wins,
+                thisTeamViewModel.Losses,
+                thisTeamViewModel.Ties,
+                thisTeamViewModel.Games_Played,
+                thisTeamViewModel.Goals_For,
+                thisTeamViewModel.Goals_Against
+                );
             _teamRepository.CreateTeam(thisTeam);
             
             // need to create utility to convert AdminCreateTeamsViewModel.cs --> Team.cs
