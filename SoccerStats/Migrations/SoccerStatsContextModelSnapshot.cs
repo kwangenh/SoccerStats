@@ -82,15 +82,21 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Assist")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Goals")
                         .HasColumnType("int");
 
-                    b.Property<int>("Team_Id")
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Team_Id");
+                    b.HasIndex("TeamId");
 
                     b.ToTable("Players");
                 });
@@ -173,11 +179,9 @@ namespace SoccerStats.Migrations
 
             modelBuilder.Entity("SoccerStats.Models.Player", b =>
                 {
-                    b.HasOne("SoccerStats.Models.Team", null)
+                    b.HasOne("SoccerStats.Models.Team", "Team")
                         .WithMany("Players")
-                        .HasForeignKey("Team_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TeamId");
                 });
 
             modelBuilder.Entity("SoccerStats.Models.PlayerMatchTime", b =>

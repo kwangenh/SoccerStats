@@ -10,9 +10,9 @@ namespace SoccerStats.Models
     {
         [Key]
         public int Id { get; set; }
-        public int Player_Id { get; set; }
-        public int Match_Id { get; set; }
         public int Start_Time { get; set; }
         public int End_Time { get; set; }
+        public Player Player { get; set; }
+        public Match Match { get; set; }
     }
 }

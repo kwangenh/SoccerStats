@@ -14,15 +14,9 @@ namespace SoccerStats.Models
         public int Home_Goals { get; set; }
         public int Away_Goals { get; set; }
         public DateTime Date { get; set; }
-        public int Match_No { get; set; }
-            
-        [ForeignKey("Team_Id")]
+        public int Match_No { get; set; } 
         public ICollection<Team> Teams { get; set; }
-
-        [ForeignKey("Match_Id")]
         public ICollection<MatchGoal> Goals { get; set; }
-
-        [ForeignKey("Match_Id")]
         public ICollection<PlayerMatchTime> Players { get; set; }
     }
 }

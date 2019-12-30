@@ -10,8 +10,8 @@ using SoccerStats.Models;
 namespace SoccerStats.Migrations
 {
     [DbContext(typeof(SoccerStatsContext))]
-    [Migration("20191224013741_UpdateTeamModel")]
-    partial class UpdateTeamModel
+    [Migration("20191230194302_adjustTeamFks")]
+    partial class adjustTeamFks
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,16 +31,10 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Away_Goals")
                         .HasColumnType("int");
 
-                    b.Property<int>("Away_Team_Id")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Home_Goals")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Home_Team_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Match_No")
@@ -64,9 +58,6 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Condeding_GK_PID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MatchId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Match_Id")
                         .HasColumnType("int");
 
@@ -78,7 +69,7 @@ namespace SoccerStats.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MatchId");
+                    b.HasIndex("Match_Id");
 
                     b.ToTable("Match_Goals");
                 });
@@ -93,15 +84,21 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Assist")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Goals")
                         .HasColumnType("int");
 
-                    b.Property<int>("Team_Id")
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Team_Id");
+                    b.HasIndex("TeamId");
 
                     b.ToTable("Players");
                 });
@@ -116,9 +113,6 @@ namespace SoccerStats.Migrations
                     b.Property<int>("End_Time")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MatchId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Match_Id")
                         .HasColumnType("int");
 
@@ -130,7 +124,7 @@ namespace SoccerStats.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MatchId");
+                    b.HasIndex("Match_Id");
 
                     b.ToTable("Player_Match_Time");
                 });
@@ -154,13 +148,13 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Losses")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MatchId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Team_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Ties")
@@ -171,7 +165,7 @@ namespace SoccerStats.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MatchId");
+                    b.HasIndex("Team_Id");
 
                     b.ToTable("Teams");
                 });
@@ -180,30 +174,32 @@ namespace SoccerStats.Migrations
                 {
                     b.HasOne("SoccerStats.Models.Match", null)
                         .WithMany("Goals")
-                        .HasForeignKey("MatchId");
+                        .HasForeignKey("Match_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SoccerStats.Models.Player", b =>
                 {
-                    b.HasOne("SoccerStats.Models.Team", null)
+                    b.HasOne("SoccerStats.Models.Team", "Team")
                         .WithMany("Players")
-                        .HasForeignKey("Team_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TeamId");
                 });
 
             modelBuilder.Entity("SoccerStats.Models.PlayerMatchTime", b =>
                 {
                     b.HasOne("SoccerStats.Models.Match", null)
                         .WithMany("Players")
-                        .HasForeignKey("MatchId");
+                        .HasForeignKey("Match_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SoccerStats.Models.Team", b =>
                 {
                     b.HasOne("SoccerStats.Models.Match", null)
                         .WithMany("Teams")
-                        .HasForeignKey("MatchId");
+                        .HasForeignKey("Team_Id");
                 });
 #pragma warning restore 612, 618
         }

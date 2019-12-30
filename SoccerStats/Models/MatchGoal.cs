@@ -11,9 +11,9 @@ namespace SoccerStats.Models
         [Key]
         public int Id { get; set; }
         public int Match_Id { get; set; } // need foreign key to Matches.cs
-        public int Scorer_PID { get; set; }
-        public int Assist_PID { get; set; } // need to allow for null
-        public int Condeding_GK_PID { get; set; }
+        public Player Scorer { get; set; }
+        public Player Assistor { get; set; } // need to allow for null
+        public Player Condeding_GK { get; set; }
         public int Time { get; set; }
     }
 }

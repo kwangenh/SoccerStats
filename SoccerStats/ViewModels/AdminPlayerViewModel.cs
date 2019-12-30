@@ -10,10 +10,10 @@ namespace SoccerStats.ViewModels
     {
         public string Name { get; set; }
         public DateTime Birthday { get; set; }        
-        public int Team_Id { get; set; }
-        public int Goals { get; set; }
-        public int Assist { get; set; }
-
+        public Team Team { get; set; }
+        public ICollection<MatchGoal> Goals { get; set; }
+        public ICollection<MatchGoal> Assists { get; set; }
+        public ICollection<MatchGoal> GoalsConceded { get; set; }
 
         public Player ConvertToPlayer(AdminPlayerViewModel playerViewModel)
         {
@@ -21,9 +21,10 @@ namespace SoccerStats.ViewModels
 
             thisPlayer.Name = playerViewModel.Name;
             thisPlayer.Birthday = playerViewModel.Birthday;
-            thisPlayer.Team_Id = playerViewModel.Team_Id;
+            thisPlayer.Team.Id = playerViewModel.Team.Id;
             thisPlayer.Goals = playerViewModel.Goals;
-            thisPlayer.Assist = playerViewModel.Assist;
+            thisPlayer.Assists = playerViewModel.Assists;
+            thisPlayer.GoalsConceded = playerViewModel.GoalsConceded;
 
             return thisPlayer;
         }

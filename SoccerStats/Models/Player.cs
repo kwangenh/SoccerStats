@@ -12,10 +12,10 @@ namespace SoccerStats.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
-        //need to set foreign key here
-        public int Team_Id { get; set; }
-        public int Goals { get; set; }
-        public int Assist { get; set; }
-        //public string Position { get; set; } will add after creating position table ? 
+        public Team Team { get; set; }
+        public ICollection<MatchGoal> Goals { get; set; }
+        public ICollection<MatchGoal> Assists { get; set; }
+        public ICollection<MatchGoal> GoalsConceded { get; set; }
+        public ICollection<PlayerMatchTime> Matches { get; set; }
     }
 }

@@ -7,6 +7,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20191223235442_coreSetu.cs" />
     <Compile Remove="Migrations\20191223235442_coreSetu.Designer.cs" />
+    <Compile Remove="Migrations\20191224013741_UpdateTeamModel.cs" />
+    <Compile Remove="Migrations\20191224013741_UpdateTeamModel.Designer.cs" />
+    <Compile Remove="Migrations\20191224015209_updatedMatchModel.cs" />
+    <Compile Remove="Migrations\20191224015209_updatedMatchModel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

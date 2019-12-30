@@ -20,9 +20,6 @@ namespace SoccerStats.Models
         public int Games_Played { get; set; }
         public int Goals_For { get; set; }
         public int Goals_Against { get; set; }
-
-
-        [ForeignKey("Team_Id")]
         public ICollection<Player> Players { get; set; }
 
         public Team(string name, int points, int wins, int losses, int ties, int gamesPlayed, int goalsFor, int goalsAgainst)
