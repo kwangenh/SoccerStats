@@ -40,9 +40,10 @@ namespace SoccerStats.Controllers
 
         public AdminCreateTeamsViewModel CreateTeam(AdminCreateTeamsViewModel thisTeamViewModel)
         {
-            Team thisTeam = new Team();
+            // is this even good?
+            Team thisTeam = thisTeamViewModel.CreateTeamModel(thisTeamViewModel);
             _teamRepository.CreateTeam(thisTeam);
-            //return thisTeam;
+            
             // need to create utility to convert AdminCreateTeamsViewModel.cs --> Team.cs
             return thisTeamViewModel;
         }

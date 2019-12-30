@@ -17,5 +17,21 @@ namespace SoccerStats.ViewModels
         public int Goals_For { get; set; }
         public int Goals_Against { get; set; }
 
+        public Team CreateTeamModel(AdminCreateTeamsViewModel thisViewModel)
+        {
+            Team thisTeam = new Team();
+
+            thisTeam.Name = thisViewModel.Name;
+            thisTeam.Points = thisViewModel.Points;
+            thisTeam.Wins = thisViewModel.Wins;
+            thisTeam.Losses = thisViewModel.Losses;
+            thisTeam.Ties = thisViewModel.Ties;
+            thisTeam.Games_Played = thisViewModel.Games_Played;
+            thisTeam.Goals_For = thisViewModel.Goals_For;
+            thisTeam.Goals_Against = thisViewModel.Goals_Against;
+
+            return thisTeam;
+        }
+
     }
 } 
