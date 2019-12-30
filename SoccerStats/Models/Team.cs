@@ -37,5 +37,8 @@ namespace SoccerStats.Models
             this.Goals_Against = goalsAgainst;
         }
 
+        public Team()
+        {
+        }
     }
 }
