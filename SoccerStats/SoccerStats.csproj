@@ -11,6 +11,14 @@
     <Compile Remove="Migrations\20191224013741_UpdateTeamModel.Designer.cs" />
     <Compile Remove="Migrations\20191224015209_updatedMatchModel.cs" />
     <Compile Remove="Migrations\20191224015209_updatedMatchModel.Designer.cs" />
+    <Compile Remove="Migrations\20191230194302_adjustTeamFks.cs" />
+    <Compile Remove="Migrations\20191230194302_adjustTeamFks.Designer.cs" />
+    <Compile Remove="Migrations\20191231014549_addedGoalAssistAndConcede.cs" />
+    <Compile Remove="Migrations\20191231014549_addedGoalAssistAndConcede.Designer.cs" />
+    <Compile Remove="Migrations\20191231020050_correctedFksAndAddedGoalsAssistAndConcede.cs" />
+    <Compile Remove="Migrations\20191231020050_correctedFksAndAddedGoalsAssistAndConcede.Designer.cs" />
+    <Compile Remove="Migrations\20191231202725_correctedModels.cs" />
+    <Compile Remove="Migrations\20191231202725_correctedModels.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

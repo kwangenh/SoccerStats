@@ -21,6 +21,10 @@ namespace SoccerStats.Models
         public int Goals_For { get; set; }
         public int Goals_Against { get; set; }
         public ICollection<Player> Players { get; set; }
+        [InverseProperty("HomeTeam")]
+        public ICollection<Match> HomeMatches { get; set; }
+        [InverseProperty("AwayTeam")]
+        public ICollection<Match> AwayMatches { get; set; }
 
         public Team(string name, int points, int wins, int losses, int ties, int gamesPlayed, int goalsFor, int goalsAgainst)
         {

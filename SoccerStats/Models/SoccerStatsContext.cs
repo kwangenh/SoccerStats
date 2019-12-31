@@ -14,29 +14,10 @@ namespace SoccerStats.Models
         {
 
         }
-        /*
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<MatchGoal>()
-                .HasOne(x => x.)
-                .WithMany(p => p.InvestorToWholesalers)
-                .HasForeignKey(pt => pt.InvestorId);
-
-            modelBuilder.Entity<InvestorToWholesaler>()
-                .HasOne(pt => pt.Wholesaler)
-                .WithMany(p => p.InvestorToWholesalers)
-                .HasForeignKey(pt => pt.WholesalerId);
-        }
-        */
-        public DbSet<Match> Matches { get; set; }
-        public DbSet<MatchGoal> Match_Goals { get; set; }
+        public DbSet<Match> Matches { get; set; }        
         public DbSet<Player> Players { get; set; }
         public DbSet<PlayerMatchTime> Player_Match_Time { get; set; }
         public DbSet<Team> Teams { get; set; }
-
-        
-
+        public DbSet<MatchGoal> Match_Goals { get; set; }
     }
 }

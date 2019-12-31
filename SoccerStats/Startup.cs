@@ -33,7 +33,7 @@ namespace SoccerStats
             services.AddMvc();
             
             // mapping contracts to repos
-            services.AddScoped<IMatchGoalRepository, MatchGoalRepository>();
+            //services.AddScoped<IMatchGoalRepository, MatchGoalRepository>();
             services.AddScoped<IMatchRepository, MatchRepository>();                        
             services.AddScoped<IPlayerMatchTimeRepository, PlayerMatchTimeRepository>();
             services.AddScoped<IPlayerRepository, PlayerRepository>();
