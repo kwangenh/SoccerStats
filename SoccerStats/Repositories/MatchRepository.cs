@@ -24,6 +24,7 @@ namespace SoccerStats.Repositories
         public Match CreateMatch(Match thisMatch)
         {
             _context.Matches.Add(thisMatch);
+            _context.SaveChanges();
             return thisMatch;
         }
         public Match UpdateMatch(Match thisMatch)

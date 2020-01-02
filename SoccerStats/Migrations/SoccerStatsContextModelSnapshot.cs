@@ -32,6 +32,9 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Away_Goals")
                         .HasColumnType("int");
 
+                    b.Property<int>("Away_Match_Number")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -41,7 +44,7 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Home_Goals")
                         .HasColumnType("int");
 
-                    b.Property<int>("Match_No")
+                    b.Property<int>("Home_Match_Number")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

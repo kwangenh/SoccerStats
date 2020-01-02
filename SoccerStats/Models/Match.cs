@@ -10,12 +10,17 @@ namespace SoccerStats.Models
     public class Match
     {
         [Key]
-        public int Id { get; set; }
-        // may need to add home team and away team foregin keys with annotation tag [ForeignKey("FK_Here"]
+        public int Id { get; set; }        
         public int Home_Goals { get; set; }
         public int Away_Goals { get; set; }
+        /*
+         *  hmm this may require a home and away team 
+         *  class so each can have their own week number
+         *  i'll just add prop instead on Match
+         */
+        public int Home_Match_Number { get; set; } 
+        public int Away_Match_Number { get; set; }
         public DateTime Date { get; set; }
-        public int Match_No { get; set; } 
         public ICollection<MatchGoal> Events { get; set; }
         public ICollection<PlayerMatchTime> Players { get; set; }
         public Team HomeTeam { get; set; }

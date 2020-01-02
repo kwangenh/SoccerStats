@@ -19,6 +19,8 @@
     <Compile Remove="Migrations\20191231020050_correctedFksAndAddedGoalsAssistAndConcede.Designer.cs" />
     <Compile Remove="Migrations\20191231202725_correctedModels.cs" />
     <Compile Remove="Migrations\20191231202725_correctedModels.Designer.cs" />
+    <Compile Remove="Migrations\20191231203056_correctedModels.cs" />
+    <Compile Remove="Migrations\20191231203056_correctedModels.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

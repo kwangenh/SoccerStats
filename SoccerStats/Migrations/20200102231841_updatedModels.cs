@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SoccerStats.Migrations
 {
-    public partial class correctedModels : Migration
+    public partial class updatedModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +45,10 @@ namespace SoccerStats.Migrations
 
             migrationBuilder.DropColumn(
                 name: "Home_Team_Id",
+                table: "Matches");
+
+            migrationBuilder.DropColumn(
+                name: "Match_No",
                 table: "Matches");
 
             migrationBuilder.DropColumn(
@@ -90,9 +94,21 @@ namespace SoccerStats.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
+                name: "Away_Match_Number",
+                table: "Matches",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.AddColumn<int>(
                 name: "HomeTeamId",
                 table: "Matches",
                 nullable: true);
+
+            migrationBuilder.AddColumn<int>(
+                name: "Home_Match_Number",
+                table: "Matches",
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.AddColumn<int>(
                 name: "AssistorId",
@@ -280,7 +296,15 @@ namespace SoccerStats.Migrations
                 table: "Matches");
 
             migrationBuilder.DropColumn(
+                name: "Away_Match_Number",
+                table: "Matches");
+
+            migrationBuilder.DropColumn(
                 name: "HomeTeamId",
+                table: "Matches");
+
+            migrationBuilder.DropColumn(
+                name: "Home_Match_Number",
                 table: "Matches");
 
             migrationBuilder.DropColumn(
@@ -345,6 +369,13 @@ namespace SoccerStats.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "Home_Team_Id",
+                table: "Matches",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.AddColumn<int>(
+                name: "Match_No",
                 table: "Matches",
                 type: "int",
                 nullable: false,

@@ -10,8 +10,8 @@ using SoccerStats.Models;
 namespace SoccerStats.Migrations
 {
     [DbContext(typeof(SoccerStatsContext))]
-    [Migration("20191231203056_correctedModels")]
-    partial class correctedModels
+    [Migration("20200102231841_updatedModels")]
+    partial class updatedModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Away_Goals")
                         .HasColumnType("int");
 
+                    b.Property<int>("Away_Match_Number")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -43,7 +46,7 @@ namespace SoccerStats.Migrations
                     b.Property<int>("Home_Goals")
                         .HasColumnType("int");
 
-                    b.Property<int>("Match_No")
+                    b.Property<int>("Home_Match_Number")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
