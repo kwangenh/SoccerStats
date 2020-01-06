@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using SoccerStats.Models;
 using SoccerStats.Contracts;
 using SoccerStats.ViewModels;
+using SoccerStats.Utility;
 
 namespace SoccerStats.Controllers
 {
@@ -14,6 +15,8 @@ namespace SoccerStats.Controllers
         private readonly ITeamRepository _teamRepository;
         private readonly IPlayerRepository _playerRepository;
         private readonly IMatchRepository _matchRepository;
+
+        private readonly TeamUtilities _teamUtilities = new TeamUtilities();
 
         public AdminController(IPlayerRepository playerRepository, ITeamRepository teamRepository, IMatchRepository matchRepository)
         {
@@ -24,7 +27,14 @@ namespace SoccerStats.Controllers
 
         public ViewResult Teams()
         {
-            return View();
+            IEnumerable<Team> teams = _teamRepository.GetAllTeams();
+            return View(teams);
+        }
+
+        public ViewResult EditTeam(int id)
+        {
+            Team thisTeam = _teamRepository.GetTeamById(id);
+            return View(thisTeam);            
         }
 
         public ViewResult Players()
@@ -38,32 +48,20 @@ namespace SoccerStats.Controllers
         }
 
 
-        public AdminCreateTeamsViewModel CreateTeam(AdminCreateTeamsViewModel thisTeamViewModel)
+        public ViewResult CreateTeam(AdminCreateTeamViewModel thisTeamViewModel)
         {
-            // is this even good?
-
-            // should i just rename AdminCreatTeamsViewModel --> AdminViewModels instead and use same viewmodel thorughout page?
-            // using constructor each time for each unique viewmodel will get cumbersone
-            //Team thisTeam = thisTeamViewModel.CreateTeamModel(thisTeamViewModel);
-            Team thisTeam = new Team(
-                thisTeamViewModel.Name,
-                thisTeamViewModel.Points,
-                thisTeamViewModel.Wins,
-                thisTeamViewModel.Losses,
-                thisTeamViewModel.Ties,
-                thisTeamViewModel.Games_Played,
-                thisTeamViewModel.Goals_For,
-                thisTeamViewModel.Goals_Against
-                );
+            Team thisTeam = _teamUtilities.CreateTeamModel(thisTeamViewModel);
             _teamRepository.CreateTeam(thisTeam);
-            
-            // need to create utility to convert AdminCreateTeamsViewModel.cs --> Team.cs
-            return thisTeamViewModel;
+
+            // call the Teams view after creating this record
+            return Teams();
         }
 
-        public Team DeleteTeam(int teamId)
+        public ViewResult DeleteTeam(int teamId)
         {
-            return _teamRepository.DeleteTeam(teamId);            
+            _teamRepository.DeleteTeam(teamId);
+
+            return Teams(); 
         }
 
         public Player CreatePlayer(Player thisPlayer)

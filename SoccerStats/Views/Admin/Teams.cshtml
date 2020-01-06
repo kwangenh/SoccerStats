@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SoccerStats.Models.Team>
+
+@{
+    ViewData["Title"] = "Admin Teams View";
+}
+
+<h1>Admin Teams View</h1>
+
+<table>
+    <tr>
+        <th>Team Name</th>
+        <th>Points</th>
+        <th>Wins</th>
+        <th>Ties</th>
+        <th>Losses</th>
+    </tr>
+    @foreach (var team in Model)
+    {
+        <tr>
+            <th>@team.Name</th>
+            <th>@team.Points</th>
+            <th>@team.Wins</th>
+            <th>@team.Ties</th>
+            <th>@team.Losses</th>
+            <th><a asp-controller="Admin" asp-action="EditTeam" asp-route-id="@team.Id">Edit</a></th>
+        </tr>
+    }
+</table>
+
+
