@@ -39,12 +39,16 @@ namespace SoccerStats.Controllers
             return Teams();
         }
 
+        public ViewResult CreateTeam()
+        {
+            return View();
+        }
+
         public ViewResult DeleteTeam(int teamId)
         {
             _teamRepository.DeleteTeam(teamId);
             return Teams();
         }
-
 
         public ViewResult EditTeam(int id)
         {
@@ -70,6 +74,11 @@ namespace SoccerStats.Controllers
             return Players();
         }
 
+        public ViewResult CreatePlayer()
+        {
+            return View();
+        }
+
         public ViewResult DeletePlayer(int playerId)
         {
             _playerRepository.DeletePlayer(playerId);
@@ -92,6 +101,11 @@ namespace SoccerStats.Controllers
         {
             IEnumerable<Match> matches = _matchRepository.GetAllMatches();
             return View(matches);
+        }
+
+        public ViewResult CreateMatch()
+        {
+            return View();
         }
 
         public ViewResult CreateMatch(Match thisMatch)
