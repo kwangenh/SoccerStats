@@ -27,6 +27,11 @@ namespace SoccerStats.Controllers
         public ViewResult Teams()
         {
             IEnumerable<Team> teams = _teamRepository.GetAllTeams();
+            //IEnumerable<AdminTeamsViewModel> teamViewModels
+            foreach(var team in teams)
+            {
+
+            }
             return View(teams);
         }
 
