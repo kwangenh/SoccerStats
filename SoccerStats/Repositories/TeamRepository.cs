@@ -123,5 +123,35 @@ namespace SoccerStats.Repositories
             };
             return thisTeam;
         }
+
+        public AdminTeamsViewModel CreateAdminTeamViewModel(Team thisTeam)
+        {
+            AdminTeamsViewModel viewModel = new AdminTeamsViewModel
+            {
+                Id = thisTeam.Id,
+                Name = thisTeam.Name,
+                Points = thisTeam.Points,
+                Wins = thisTeam.Wins,
+                Losses = thisTeam.Losses,
+                Ties = thisTeam.Ties,
+                Games_Played = thisTeam.Games_Played,
+                Goals_For = thisTeam.Goals_For,
+                Goals_Against = thisTeam.Goals_Against
+            };
+
+            return viewModel;
+        }
+
+        public IEnumerable<AdminTeamsViewModel> CreateAdminTeamViewModels(IEnumerable<Team> teams)
+        {
+            List<AdminTeamsViewModel> viewModels = new List<AdminTeamsViewModel>();
+            foreach(Team team in teams)
+            {
+                viewModels.Add(CreateAdminTeamViewModel(team));
+            }
+
+            IEnumerable<AdminTeamsViewModel> enumViewModels = viewModels;
+            return (enumViewModels);
+        }
     }
 }
