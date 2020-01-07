@@ -15,9 +15,6 @@ namespace SoccerStats.Controllers
         private readonly ITeamRepository _teamRepository;
         private readonly IPlayerRepository _playerRepository;
         private readonly IMatchRepository _matchRepository;
-
-        private readonly TeamUtilities _teamUtilities = new TeamUtilities();
-
         public AdminController(IPlayerRepository playerRepository, ITeamRepository teamRepository, IMatchRepository matchRepository)
         {
             _playerRepository = playerRepository;
@@ -25,32 +22,16 @@ namespace SoccerStats.Controllers
             _matchRepository = matchRepository;
         }
 
+
         public ViewResult Teams()
         {
             IEnumerable<Team> teams = _teamRepository.GetAllTeams();
             return View(teams);
         }
 
-        public ViewResult EditTeam(int id)
-        {
-            Team thisTeam = _teamRepository.GetTeamById(id);
-            return View(thisTeam);            
-        }
-
-        public ViewResult Players()
-        {
-            return View();
-        }
-
-        public ViewResult Matches()
-        {
-            return View();
-        }
-
-
         public ViewResult CreateTeam(AdminCreateTeamViewModel thisTeamViewModel)
         {
-            Team thisTeam = _teamUtilities.CreateTeamModel(thisTeamViewModel);
+            Team thisTeam = _teamRepository.CreateTeamModel(thisTeamViewModel);
             _teamRepository.CreateTeam(thisTeam);
 
             // call the Teams view after creating this record
@@ -60,28 +41,80 @@ namespace SoccerStats.Controllers
         public ViewResult DeleteTeam(int teamId)
         {
             _teamRepository.DeleteTeam(teamId);
-
-            return Teams(); 
+            return Teams();
         }
 
-        public Player CreatePlayer(Player thisPlayer)
+
+        public ViewResult EditTeam(int id)
         {
-            return _playerRepository.CreatePlayer(thisPlayer);
+            Team thisTeam = _teamRepository.GetTeamById(id);
+            return View(thisTeam);
         }
 
-        public Player DeletePlayer(int playerId)        
+        public ViewResult EditTeam(Team thisTeam)
         {
-            return _playerRepository.DeletePlayer(playerId);
+            _teamRepository.UpdateTeam(thisTeam);
+            return Teams();
         }
 
-        public Match CreateMatch(Match thisMatch)
+        public ViewResult Players()
         {
-            return _matchRepository.CreateMatch(thisMatch);
+            IEnumerable<Player> players = _playerRepository.GetAllPlayers();
+            return View(players);
         }
 
-        public Match DeleteMatch(int matchId)
+        public ViewResult CreatePlayer(Player thisPlayer)
         {
-            return _matchRepository.DeleteMatch(matchId);
+            _playerRepository.CreatePlayer(thisPlayer);
+            return Players();
+        }
+
+        public ViewResult DeletePlayer(int playerId)
+        {
+            _playerRepository.DeletePlayer(playerId);
+            return Players();
+        }
+        
+        public ViewResult EditPlayer(int id)
+        {
+            Player thisPlayer = _playerRepository.GetPlayerById(id);
+            return View(thisPlayer);
+        }
+
+        public ViewResult EditPlayer(Player thisPlayer)
+        {
+            _playerRepository.UpdatePlayer(thisPlayer);
+            return Players();
+        }
+
+        public ViewResult Matches()
+        {
+            IEnumerable<Match> matches = _matchRepository.GetAllMatches();
+            return View(matches);
+        }
+
+        public ViewResult CreateMatch(Match thisMatch)
+        {
+            _matchRepository.CreateMatch(thisMatch);
+            return Matches();
+        }
+
+        public ViewResult DeleteMatch(int matchId)
+        {
+            _matchRepository.DeleteMatch(matchId);
+            return Matches();
+        }
+
+        public ViewResult EditMatch(int id)
+        {
+            Match thisMatch = _matchRepository.GetMatchById(id);
+            return View(thisMatch);
+        }
+
+        public ViewResult EditMatch(Match thisMatch)
+        {
+            _matchRepository.UpdateMatch(thisMatch);
+            return Matches();
         }
     }
 }
