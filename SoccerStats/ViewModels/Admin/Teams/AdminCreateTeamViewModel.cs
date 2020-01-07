@@ -1,10 +1,9 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SoccerStats.Models;
 
-namespace SoccerStats.ViewModels
+namespace SoccerStats.ViewModels.Admin.Teams
 {
     public class AdminCreateTeamViewModel
     {
@@ -15,6 +14,6 @@ namespace SoccerStats.ViewModels
         public int Ties { get; set; }
         public int Games_Played { get; set; }
         public int Goals_For { get; set; }
-        public int Goals_Against { get; set; }        
+        public int Goals_Against { get; set; }
     }
-} 
+}

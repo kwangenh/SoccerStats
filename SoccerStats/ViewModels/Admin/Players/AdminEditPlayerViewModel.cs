@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoccerStats.ViewModels
+namespace SoccerStats.ViewModels.Admin.Players
 {
-    public class AdminEditTeamViewModel : AdminCreateTeamViewModel
+    public class AdminEditPlayerViewModel : AdminCreatePlayerViewModel
     {
         public int Id { get; set; }
     }

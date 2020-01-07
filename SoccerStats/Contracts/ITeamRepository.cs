@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SoccerStats.Models;
 using SoccerStats.ViewModels;
+using SoccerStats.ViewModels.Admin.Teams;
 
 namespace SoccerStats.Contracts
 {
