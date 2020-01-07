@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SoccerStats.Contracts;
 using SoccerStats.Models;
+using SoccerStats.ViewModels.Admin.Matches;
 
 namespace SoccerStats.Repositories
 {
@@ -53,6 +54,78 @@ namespace SoccerStats.Repositories
         public IEnumerable<Match> GetAllMatches()
         {
             return _context.Matches;
+        }
+
+        public Match CreateMatchModel(AdminCreateMatchViewModel viewModel)
+        {
+            Match match = new Match
+            {
+                HomeTeam = viewModel.HomeTeam,
+                AwayTeam = viewModel.AwayTeam,
+                Home_Goals = viewModel.Home_Goals,
+                Away_Goals = viewModel.Away_Goals,
+                Home_Match_Number = viewModel.Home_Match_Number,
+                Away_Match_Number = viewModel.Away_Match_Number,
+                Date = viewModel.Date,
+                Events = viewModel.Events,
+                Players = viewModel.Players                
+            };
+
+            return match;
+        
+        }
+        public Match CreateMatchModel(AdminEditMatchViewModel viewModel)
+        {
+            Match match = new Match
+            {
+                Id = viewModel.Id,
+                HomeTeam = viewModel.HomeTeam,
+                AwayTeam = viewModel.AwayTeam,
+                Home_Goals = viewModel.Home_Goals,
+                Away_Goals = viewModel.Away_Goals,
+                Home_Match_Number = viewModel.Home_Match_Number,
+                Away_Match_Number = viewModel.Away_Match_Number,
+                Date = viewModel.Date,
+                Events = viewModel.Events,
+                Players = viewModel.Players
+            };
+
+            return match;
+        }
+        public AdminCreateMatchViewModel CreateAdminCreateMatchViewModel(Match thisMatch)
+        {
+            AdminCreateMatchViewModel viewModel = new AdminCreateMatchViewModel
+            {
+                HomeTeam = thisMatch.HomeTeam,
+                AwayTeam = thisMatch.AwayTeam,
+                Home_Goals = thisMatch.Home_Goals,
+                Away_Goals = thisMatch.Away_Goals,
+                Home_Match_Number = thisMatch.Home_Match_Number,
+                Away_Match_Number = thisMatch.Away_Match_Number,
+                Date = thisMatch.Date,
+                Events = thisMatch.Events,
+                Players = thisMatch.Players
+            };
+
+            return viewModel;
+        }
+        public AdminEditMatchViewModel CreateAdminEditMatchViewModel(Match thisMatch)
+        {
+            AdminEditMatchViewModel viewModel = new AdminEditMatchViewModel
+            {
+                Id = thisMatch.Id,
+                HomeTeam = thisMatch.HomeTeam,
+                AwayTeam = thisMatch.AwayTeam,
+                Home_Goals = thisMatch.Home_Goals,
+                Away_Goals = thisMatch.Away_Goals,
+                Home_Match_Number = thisMatch.Home_Match_Number,
+                Away_Match_Number = thisMatch.Away_Match_Number,
+                Date = thisMatch.Date,
+                Events = thisMatch.Events,
+                Players = thisMatch.Players
+            };
+
+            return viewModel;
         }
     }
 }

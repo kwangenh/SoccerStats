@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SoccerStats.Models;
+using SoccerStats.ViewModels.Admin.Matches;
 
 namespace SoccerStats.Contracts
 {
@@ -13,5 +14,9 @@ namespace SoccerStats.Contracts
         public Match UpdateMatch(Match thisMatch);
         public Match DeleteMatch(int matchId);
         public IEnumerable<Match> GetAllMatches();
+        public Match CreateMatchModel(AdminCreateMatchViewModel viewModel);
+        public Match CreateMatchModel(AdminEditMatchViewModel viewModel);
+        public AdminCreateMatchViewModel CreateAdminCreateMatchViewModel(Match thisMatch);
+        public AdminEditMatchViewModel CreateAdminEditMatchViewModel(Match thisMatch);
     }
 }

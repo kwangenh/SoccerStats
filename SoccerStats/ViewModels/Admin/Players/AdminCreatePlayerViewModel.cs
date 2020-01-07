@@ -7,7 +7,7 @@ using SoccerStats.Models;
 namespace SoccerStats.ViewModels.Admin.Players
 {
     public class AdminCreatePlayerViewModel
-    {
+    {   
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
         public Team Team { get; set; }

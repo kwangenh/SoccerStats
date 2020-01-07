@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SoccerStats.Models;
 using SoccerStats.Contracts;
-using SoccerStats.ViewModels;
-using SoccerStats.Utility;
 using SoccerStats.ViewModels.Admin.Teams;
+using SoccerStats.ViewModels.Admin.Matches;
+using SoccerStats.ViewModels.Admin.Players;
 
 namespace SoccerStats.Controllers
 {

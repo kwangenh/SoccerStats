@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SoccerStats.Models;
 using SoccerStats.Contracts;
+using SoccerStats.ViewModels.Admin.Players;
 
 namespace SoccerStats.Repositories
 {
@@ -51,6 +52,50 @@ namespace SoccerStats.Repositories
         public IEnumerable<Player> GetAllPlayers()
         {
             return _context.Players;
+        }
+
+        public Player CreatePlayerModel(AdminEditPlayerViewModel viewModel)
+        {
+            Player player = new Player
+            {
+                Id = viewModel.Id,
+                Birthday = viewModel.Birthday,
+                Name = viewModel.Name,
+                Team = viewModel.Team,
+            };
+            return player;
+        }
+        public Player CreatePlayerModel(AdminCreatePlayerViewModel viewModel)
+        {
+            Player player = new Player
+            {
+                Birthday = viewModel.Birthday,
+                Name = viewModel.Name,
+                Team = viewModel.Team
+            };
+
+            return player;
+        }
+        public AdminCreatePlayerViewModel CreateAdminCreatePlayerViewModel(Player thisPlayer)
+        {
+            AdminCreatePlayerViewModel viewModel = new AdminCreatePlayerViewModel
+            {
+                Birthday = thisPlayer.Birthday,
+                Name = thisPlayer.Name,
+                Team = thisPlayer.Team
+            };
+            return viewModel;
+        }
+        public AdminEditPlayerViewModel CreateAdminEditPlayerViewModel(Player thisPlayer)
+        {
+            AdminEditPlayerViewModel viewModel = new AdminEditPlayerViewModel
+            {
+                Id = thisPlayer.Id,
+                Birthday = thisPlayer.Birthday,
+                Name = thisPlayer.Name,
+                Team = thisPlayer.Team
+            };
+            return viewModel;
         }
     }
 }

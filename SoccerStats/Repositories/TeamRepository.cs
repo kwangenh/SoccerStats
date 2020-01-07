@@ -93,7 +93,7 @@ namespace SoccerStats.Repositories
 
         public Team CreateTeamModel(AdminEditTeamViewModel thisViewModel)
         {
-            var thisTeam = new Team
+            Team thisTeam = new Team
             {
                 Id = thisViewModel.Id,
                 Name = thisViewModel.Name,
@@ -110,7 +110,7 @@ namespace SoccerStats.Repositories
 
         public Team CreateTeamModel(AdminCreateTeamViewModel thisViewModel)
         {
-            var thisTeam = new Team
+            Team thisTeam = new Team
             {
                 Name = thisViewModel.Name,
                 Points = thisViewModel.Points,
