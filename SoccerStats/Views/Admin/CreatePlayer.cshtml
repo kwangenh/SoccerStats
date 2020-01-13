@@ -6,3 +6,12 @@
 
 <h1>Create Player</h1>
 
+<form asp-controller="Admin" asp-action="CreatePlayer" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" /><br />
+    <label asp-for="Team"></label>
+    <select asp-for="Team" asp-items="@(new SelectList(Model.AvailableTeams))"></select><br />
+    <label asp-for="Birthday"></label>
+    <input asp-for="Birthday" />
+</form>
+

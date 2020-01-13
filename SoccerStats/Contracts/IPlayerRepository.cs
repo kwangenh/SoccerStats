@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SoccerStats.Models;
 using SoccerStats.ViewModels.Admin.Players;
 
@@ -18,5 +19,6 @@ namespace SoccerStats.Contracts
         public Player CreatePlayerModel(AdminCreatePlayerViewModel viewModel);
         public AdminCreatePlayerViewModel CreateAdminCreatePlayerViewModel(Player thisPlayer);
         public AdminEditPlayerViewModel CreateAdminEditPlayerViewModel(Player thisPlayer);
+
     }
 }

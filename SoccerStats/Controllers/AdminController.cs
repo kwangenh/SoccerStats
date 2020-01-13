@@ -8,6 +8,7 @@ using SoccerStats.Contracts;
 using SoccerStats.ViewModels.Admin.Teams;
 using SoccerStats.ViewModels.Admin.Matches;
 using SoccerStats.ViewModels.Admin.Players;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SoccerStats.Controllers
 {
@@ -70,15 +71,24 @@ namespace SoccerStats.Controllers
             return View(players);
         }
 
-        public ViewResult CreatePlayer(Player thisPlayer)
+        [HttpPost]
+        public ViewResult CreatePlayer(AdminCreatePlayerViewModel thisPlayer)
         {
-            _playerRepository.CreatePlayer(thisPlayer);
+            _playerRepository.CreatePlayer(_playerRepository.CreatePlayerModel(thisPlayer));
             return Players();
         }
 
+        [HttpGet]
         public ViewResult CreatePlayer()
         {
-            return View();
+            AdminCreatePlayerViewModel viewModel = new AdminCreatePlayerViewModel();
+
+            // could add method to teamRepo to create SelectList of only id/name instead of Team obj
+            // would this belong here though?
+            // would be best to have this as part of AdminCreatePlayerViewModel !!
+
+            viewModel.AvailableTeams = _teamRepository.GetTeamSelectList();
+            return View(viewModel);
         }
 
         public ViewResult DeletePlayer(int playerId)

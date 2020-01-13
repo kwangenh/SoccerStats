@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SoccerStats.Models;
 using SoccerStats.ViewModels;
 using SoccerStats.ViewModels.Admin.Teams;
@@ -15,6 +16,7 @@ namespace SoccerStats.Contracts
         public Team UpdateTeam(Team thisTeam);
         public Team CreateTeam(Team thisTeam);
         public IEnumerable<Team> GetAllTeams();
+        public List<SelectListItem> GetTeamSelectList();
         public Team CreateTeamModel(AdminCreateTeamViewModel viewModel);
         public Team CreateTeamModel(AdminEditTeamViewModel viewModel);
         public AdminCreateTeamViewModel CreateAdminCreateTeamViewModel(Team thisTeam);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SoccerStats.Contracts;
 using SoccerStats.Models;
 using SoccerStats.ViewModels;
@@ -53,6 +54,16 @@ namespace SoccerStats.Repositories
         public IEnumerable<Team> GetAllTeams()
         {
             return _context.Teams;
+        }
+        
+        public List<SelectListItem> GetTeamSelectList()
+        {
+            List<Team> teams = GetAllTeams().ToList();
+            List<SelectListItem> teamItems = new List<SelectListItem>();
+
+            //todo - loop through teams and add id/name to teamItems
+
+            return teamItems;
         }
 
         public AdminCreateTeamViewModel CreateAdminCreateTeamViewModel(Team thisTeam)

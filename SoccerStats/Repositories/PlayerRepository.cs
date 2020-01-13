@@ -52,7 +52,7 @@ namespace SoccerStats.Repositories
         public IEnumerable<Player> GetAllPlayers()
         {
             return _context.Players;
-        }
+        }        
 
         public Player CreatePlayerModel(AdminEditPlayerViewModel viewModel)
         {
@@ -82,8 +82,10 @@ namespace SoccerStats.Repositories
             {
                 Birthday = thisPlayer.Birthday,
                 Name = thisPlayer.Name,
-                Team = thisPlayer.Team
+                Team = thisPlayer.Team,
+                AvailableTeams = _context.Teams.ToList()
             };
+
             return viewModel;
         }
         public AdminEditPlayerViewModel CreateAdminEditPlayerViewModel(Player thisPlayer)
@@ -93,8 +95,10 @@ namespace SoccerStats.Repositories
                 Id = thisPlayer.Id,
                 Birthday = thisPlayer.Birthday,
                 Name = thisPlayer.Name,
-                Team = thisPlayer.Team
+                Team = thisPlayer.Team,
+                AvailableTeams = _context.Teams.ToList()
             };
+
             return viewModel;
         }
     }
