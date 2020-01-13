@@ -12,6 +12,8 @@ namespace SoccerStats.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [MaxLength(40, ErrorMessage = "Maximum number of characters that can be entered is 40!")]        
         public string Name { get; set; }
         public int Points { get; set; }
         public int Wins { get; set; }

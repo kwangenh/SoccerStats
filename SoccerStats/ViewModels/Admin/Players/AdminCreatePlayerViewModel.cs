@@ -9,7 +9,8 @@ namespace SoccerStats.ViewModels.Admin.Players
 {
     public class AdminCreatePlayerViewModel
     {   
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName {get;set;}
         public DateTime Birthday { get; set; }
         public Team Team { get; set; }
         public List<SelectListItem> AvailableTeams { get; set; }
