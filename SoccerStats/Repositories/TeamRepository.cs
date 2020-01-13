@@ -61,7 +61,10 @@ namespace SoccerStats.Repositories
             List<Team> teams = GetAllTeams().ToList();
             List<SelectListItem> teamItems = new List<SelectListItem>();
 
-            //todo - loop through teams and add id/name to teamItems
+            foreach (var team in teams)
+            {
+                teamItems.Add(new SelectListItem { Text = team.Name, Value = team.Id.ToString() });
+            }
 
             return teamItems;
         }

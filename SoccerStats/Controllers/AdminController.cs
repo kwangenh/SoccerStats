@@ -83,10 +83,8 @@ namespace SoccerStats.Controllers
         {
             AdminCreatePlayerViewModel viewModel = new AdminCreatePlayerViewModel();
 
-            // could add method to teamRepo to create SelectList of only id/name instead of Team obj
-            // would this belong here though?
-            // would be best to have this as part of AdminCreatePlayerViewModel !!
-
+            // would be best to have this as part of AdminCreatePlayerViewModel? - actually NOPE!!
+            // i really dont like this
             viewModel.AvailableTeams = _teamRepository.GetTeamSelectList();
             return View(viewModel);
         }
@@ -117,6 +115,8 @@ namespace SoccerStats.Controllers
 
         public ViewResult CreateMatch()
         {
+            AdminCreateMatchViewModel viewModel = new AdminCreateMatchViewModel();            
+
             return View();
         }
 

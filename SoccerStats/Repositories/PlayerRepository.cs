@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using SoccerStats.Models;
 using SoccerStats.Contracts;
 using SoccerStats.ViewModels.Admin.Players;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SoccerStats.Repositories
 {
@@ -60,7 +61,8 @@ namespace SoccerStats.Repositories
             {
                 Id = viewModel.Id,
                 Birthday = viewModel.Birthday,
-                Name = viewModel.Name,
+                FirstName = viewModel.FirstName,
+                LastName = viewModel.LastName,
                 Team = viewModel.Team,
             };
             return player;
@@ -70,7 +72,8 @@ namespace SoccerStats.Repositories
             Player player = new Player
             {
                 Birthday = viewModel.Birthday,
-                Name = viewModel.Name,
+                FirstName = viewModel.FirstName,
+                LastName = viewModel.LastName,
                 Team = viewModel.Team
             };
 
@@ -81,9 +84,9 @@ namespace SoccerStats.Repositories
             AdminCreatePlayerViewModel viewModel = new AdminCreatePlayerViewModel
             {
                 Birthday = thisPlayer.Birthday,
-                Name = thisPlayer.Name,
-                Team = thisPlayer.Team,
-                AvailableTeams = _context.Teams.ToList()
+                FirstName = thisPlayer.FirstName,
+                LastName = thisPlayer.LastName,
+                Team = thisPlayer.Team,                
             };
 
             return viewModel;
@@ -94,10 +97,16 @@ namespace SoccerStats.Repositories
             {
                 Id = thisPlayer.Id,
                 Birthday = thisPlayer.Birthday,
-                Name = thisPlayer.Name,
-                Team = thisPlayer.Team,
-                AvailableTeams = _context.Teams.ToList()
+                FirstName = thisPlayer.FirstName,
+                LastName = thisPlayer.LastName,
+                Team = thisPlayer.Team
             };
+            var teams = _context.Teams.ToList();
+
+            foreach (var team in teams)
+            {
+                viewModel.AvailableTeams.Add(new SelectListItem { Text = team.Name, Value = team.Id.ToString() });
+            }
 
             return viewModel;
         }

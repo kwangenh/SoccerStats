@@ -13,6 +13,7 @@ using SoccerStats.Contracts;
 using SoccerStats.Models;
 using SoccerStats.Repositories;
 using Microsoft.EntityFrameworkCore; // needed to add manually for options.UseSqlServer to work
+using SoccerStats.ViewModels.Admin.Players;
 
 namespace SoccerStats
 {
@@ -37,7 +38,7 @@ namespace SoccerStats
             services.AddScoped<IMatchRepository, MatchRepository>();                        
             services.AddScoped<IPlayerMatchTimeRepository, PlayerMatchTimeRepository>();
             services.AddScoped<IPlayerRepository, PlayerRepository>();
-            services.AddScoped<ITeamRepository, TeamRepository>();          
+            services.AddScoped<ITeamRepository, TeamRepository>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
