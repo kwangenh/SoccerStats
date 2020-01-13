@@ -60,7 +60,7 @@ namespace SoccerStats.Repositories
             {
                 Id = viewModel.Id,
                 Birthday = viewModel.Birthday,
-                Name = viewModel.Name,
+                FirstName = viewModel.FirstName,
                 Team = viewModel.Team,
             };
             return player;
@@ -70,7 +70,7 @@ namespace SoccerStats.Repositories
             Player player = new Player
             {
                 Birthday = viewModel.Birthday,
-                Name = viewModel.Name,
+                FirstName = viewModel.FirstName,
                 Team = viewModel.Team
             };
 
@@ -81,7 +81,8 @@ namespace SoccerStats.Repositories
             AdminCreatePlayerViewModel viewModel = new AdminCreatePlayerViewModel
             {
                 Birthday = thisPlayer.Birthday,
-                Name = thisPlayer.Name,
+                FirstName = thisPlayer.FirstName,
+                LastName = thisPlayer.LastName,
                 Team = thisPlayer.Team
             };
             return viewModel;
@@ -92,7 +93,7 @@ namespace SoccerStats.Repositories
             {
                 Id = thisPlayer.Id,
                 Birthday = thisPlayer.Birthday,
-                Name = thisPlayer.Name,
+                FirstName = thisPlayer.FirstName,
                 Team = thisPlayer.Team
             };
             return viewModel;

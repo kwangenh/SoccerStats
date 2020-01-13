@@ -11,7 +11,13 @@ namespace SoccerStats.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
+
+        [MaxLength(40, ErrorMessage = "Maximum number of characters that can be entered is 40!")]
+        public string FirstName { get; set; }
+
+        [MaxLength(40, ErrorMessage = "Maximum number of characters that can be entered is 40!")]
+        public string LastName { get; set; }
+
         public DateTime Birthday { get; set; }
         public Team Team { get; set; }
 
