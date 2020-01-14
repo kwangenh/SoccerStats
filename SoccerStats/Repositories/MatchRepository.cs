@@ -60,8 +60,8 @@ namespace SoccerStats.Repositories
         {
             Match match = new Match
             {
-                HomeTeam = viewModel.HomeTeam,
-                AwayTeam = viewModel.AwayTeam,
+               // HomeTeam = viewModel.HomeTeam,
+               // AwayTeam = viewModel.AwayTeam,
                 Home_Goals = viewModel.Home_Goals,
                 Away_Goals = viewModel.Away_Goals,
                 Home_Match_Number = viewModel.Home_Match_Number,
@@ -79,8 +79,8 @@ namespace SoccerStats.Repositories
             Match match = new Match
             {
                 Id = viewModel.Id,
-                HomeTeam = viewModel.HomeTeam,
-                AwayTeam = viewModel.AwayTeam,
+                //HomeTeam = viewModel.HomeTeam,
+                //AwayTeam = viewModel.AwayTeam,
                 Home_Goals = viewModel.Home_Goals,
                 Away_Goals = viewModel.Away_Goals,
                 Home_Match_Number = viewModel.Home_Match_Number,
@@ -96,7 +96,7 @@ namespace SoccerStats.Repositories
         {
             AdminCreateMatchViewModel viewModel = new AdminCreateMatchViewModel
             {
-                HomeTeam = thisMatch.HomeTeam,
+               /* HomeTeam = thisMatch.HomeTeam,
                 AwayTeam = thisMatch.AwayTeam,
                 Home_Goals = thisMatch.Home_Goals,
                 Away_Goals = thisMatch.Away_Goals,
@@ -104,7 +104,7 @@ namespace SoccerStats.Repositories
                 Away_Match_Number = thisMatch.Away_Match_Number,
                 Date = thisMatch.Date,
                 Events = thisMatch.Events,
-                Players = thisMatch.Players
+                Players = thisMatch.Players*/
             };
 
             return viewModel;
@@ -114,8 +114,10 @@ namespace SoccerStats.Repositories
             AdminEditMatchViewModel viewModel = new AdminEditMatchViewModel
             {
                 Id = thisMatch.Id,
-                HomeTeam = thisMatch.HomeTeam,
-                AwayTeam = thisMatch.AwayTeam,
+
+                // will need to fix since match will be passed into AdminEditMatchViewModel
+                //HomeTeam = thisMatch.HomeTeam,
+                //AwayTeam = thisMatch.AwayTeam,
                 Home_Goals = thisMatch.Home_Goals,
                 Away_Goals = thisMatch.Away_Goals,
                 Home_Match_Number = thisMatch.Home_Match_Number,

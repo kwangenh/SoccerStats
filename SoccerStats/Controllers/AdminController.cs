@@ -74,8 +74,9 @@ namespace SoccerStats.Controllers
         [HttpPost]
         public ViewResult CreatePlayer(AdminCreatePlayerViewModel thisPlayer)
         {
-            _playerRepository.CreatePlayer(_playerRepository.CreatePlayerModel(thisPlayer));
-            return Players();
+            thisPlayer.Team = _teamRepository.GetTeamById(thisPlayer.Team.Id);
+            _playerRepository.CreatePlayer(_playerRepository.CreatePlayerModel(thisPlayer));            
+            return CreatePlayer();
         }
 
         [HttpGet]
@@ -117,7 +118,7 @@ namespace SoccerStats.Controllers
         {
             AdminCreateMatchViewModel viewModel = new AdminCreateMatchViewModel();            
 
-            return View();
+            return View(viewModel);
         }
 
         public ViewResult CreateMatch(Match thisMatch)

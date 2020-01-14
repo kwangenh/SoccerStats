@@ -11,9 +11,17 @@
     <input asp-for="FirstName" /><br />
     <label asp-for="LastName"></label>
     <input asp-for="LastName" /><br />
+    <label asp-for="Number"></label>
+    <input asp-for="Number" /><br />
     <label asp-for="Team"></label>
-    <select asp-for="Team" asp-items="@(new SelectList(Model.AvailableTeams))"></select><br />
+    <select asp-for="Team.Id"
+            asp-items="Model.AvailableTeams">
+        <option>Please select one</option>
+    </select>
     <label asp-for="Birthday"></label>
     <input asp-for="Birthday" />
+    <p class="actions">
+        <button class="btn btn-danger order-button">Save Team</button>
+    </p>
 </form>
 

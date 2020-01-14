@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SoccerStats.Migrations
 {
-    public partial class updatedModels : Migration
+    public partial class addedPlayerNumberAndFirstLastNames : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,6 +67,15 @@ namespace SoccerStats.Migrations
                 name: "Scorer_PID",
                 table: "Match_Goals");
 
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "Teams",
+                maxLength: 40,
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
             migrationBuilder.AddColumn<DateTime>(
                 name: "Birthday",
                 table: "Players",
@@ -74,9 +83,22 @@ namespace SoccerStats.Migrations
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<string>(
-                name: "Name",
+                name: "FirstName",
                 table: "Players",
+                maxLength: 40,
                 nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "LastName",
+                table: "Players",
+                maxLength: 40,
+                nullable: true);
+
+            migrationBuilder.AddColumn<int>(
+                name: "Number",
+                table: "Players",
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.AddColumn<int>(
                 name: "TeamId",
@@ -280,7 +302,15 @@ namespace SoccerStats.Migrations
                 table: "Players");
 
             migrationBuilder.DropColumn(
-                name: "Name",
+                name: "FirstName",
+                table: "Players");
+
+            migrationBuilder.DropColumn(
+                name: "LastName",
+                table: "Players");
+
+            migrationBuilder.DropColumn(
+                name: "Number",
                 table: "Players");
 
             migrationBuilder.DropColumn(
@@ -318,6 +348,15 @@ namespace SoccerStats.Migrations
             migrationBuilder.DropColumn(
                 name: "ScorerId",
                 table: "Match_Goals");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "Teams",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldMaxLength: 40,
+                oldNullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "MatchId",

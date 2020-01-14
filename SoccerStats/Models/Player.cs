@@ -20,6 +20,7 @@ namespace SoccerStats.Models
 
         public DateTime Birthday { get; set; }
         public Team Team { get; set; }
+        public int Number { get; set; }
 
         [InverseProperty("Scorer")]
         public ICollection<MatchGoal> Goals { get; set; }

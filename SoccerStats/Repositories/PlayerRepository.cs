@@ -25,6 +25,7 @@ namespace SoccerStats.Repositories
         public Player CreatePlayer(Player thisPlayer)
         {
             _context.Players.Add(thisPlayer);
+            _context.SaveChanges();
             return thisPlayer;
         }
         public Player UpdatePlayer(Player thisPlayer)
@@ -60,6 +61,7 @@ namespace SoccerStats.Repositories
             Player player = new Player
             {
                 Id = viewModel.Id,
+                Number = viewModel.Number,
                 Birthday = viewModel.Birthday,
                 FirstName = viewModel.FirstName,
                 LastName = viewModel.LastName,
@@ -71,6 +73,7 @@ namespace SoccerStats.Repositories
         {
             Player player = new Player
             {
+                Number = viewModel.Number,
                 Birthday = viewModel.Birthday,
                 FirstName = viewModel.FirstName,
                 LastName = viewModel.LastName,
@@ -83,6 +86,7 @@ namespace SoccerStats.Repositories
         {
             AdminCreatePlayerViewModel viewModel = new AdminCreatePlayerViewModel
             {
+                Number = thisPlayer.Number,
                 Birthday = thisPlayer.Birthday,
                 FirstName = thisPlayer.FirstName,
                 LastName = thisPlayer.LastName,
