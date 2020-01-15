@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,7 +17,8 @@ namespace SoccerStats.ViewModels.Admin.Players
         [DisplayName("First Name")]
         public string FirstName { get; set; }
         [DisplayName("Last Name")]
-        public string LastName {get;set;}
+        public string LastName {get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Birthday { get; set; }
         public Team Team { get; set; }
         public int Number { get; set; }
