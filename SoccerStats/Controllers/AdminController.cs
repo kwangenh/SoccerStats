@@ -53,15 +53,17 @@ namespace SoccerStats.Controllers
             return Teams();
         }
 
+        [HttpGet]
         public ViewResult EditTeam(int id)
         {
-            Team thisTeam = _teamRepository.GetTeamById(id);
+            AdminEditTeamViewModel thisTeam = _teamRepository.CreateAdminEditTeamViewModel(_teamRepository.GetTeamById(id));
             return View(thisTeam);
         }
 
-        public ViewResult EditTeam(Team thisTeam)
+        [HttpPost]
+        public ViewResult EditTeam(AdminEditTeamViewModel thisTeam)
         {
-            _teamRepository.UpdateTeam(thisTeam);
+            _teamRepository.UpdateTeam(_teamRepository.CreateTeamModel(thisTeam));
             return Teams();
         }
 
@@ -98,12 +100,13 @@ namespace SoccerStats.Controllers
         
         public ViewResult EditPlayer(int id)
         {
-            Player thisPlayer = _playerRepository.GetPlayerById(id);
-            return View(thisPlayer);
+            AdminEditPlayerViewModel thisViewModel = _playerRepository.CreateAdminEditPlayerViewModel(_playerRepository.GetPlayerById(id));
+            return View(thisViewModel);
         }
 
-        public ViewResult EditPlayer(Player thisPlayer)
+        public ViewResult EditPlayer(AdminEditPlayerViewModel thisViewModel)
         {
+            Player thisPlayer = _playerRepository.CreatePlayerModel(thisViewModel);
             _playerRepository.UpdatePlayer(thisPlayer);
             return Players();
         }

@@ -22,7 +22,7 @@
             <th>@team.Wins</th>
             <th>@team.Ties</th>
             <th>@team.Losses</th>
-            <th><a asp-controller="Admin" asp-action="EditTeam" asp-route-id="@team.Id">Edit</a></th>
+            <th><a asp-controller="Admin" asp-action="EditTeam" asp-route-id="@team.Id" method="get">Edit</a></th>
         </tr>
     }
 </table>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SoccerStats.Contracts;
 using SoccerStats.Models;
 using SoccerStats.ViewModels;
@@ -32,10 +33,11 @@ namespace SoccerStats.Repositories
         {
             if (_context.Teams.Find(thisTeam.Id) != null)
             {
-                var updatedTeam = _context.Teams.Attach(thisTeam);
-                updatedTeam.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                var team = _context.Teams.First(g => g.Id == thisTeam.Id);
+                _context.Entry(team).CurrentValues.SetValues(thisTeam);
                 _context.SaveChanges();
-                return thisTeam;
+
+                return team;
             }
             return thisTeam;
         }

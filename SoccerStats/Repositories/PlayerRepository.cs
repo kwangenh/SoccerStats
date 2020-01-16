@@ -29,15 +29,16 @@ namespace SoccerStats.Repositories
             return thisPlayer;
         }
         public Player UpdatePlayer(Player thisPlayer)
-        {
-            if (_context.Players.Find(thisPlayer.Id) != null)
-            {
-                var updatedPlayer = _context.Players.Attach(thisPlayer);
-                updatedPlayer.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                _context.SaveChanges();
-                return thisPlayer;
-            }
-            return thisPlayer;
+        {            
+                if (_context.Players.Find(thisPlayer.Id) != null)
+                {
+                    var player = _context.Players.First(g => g.Id == thisPlayer.Id);
+                    _context.Entry(player).CurrentValues.SetValues(thisPlayer);
+                    _context.SaveChanges();
+
+                    return thisPlayer;
+                }
+                return thisPlayer;            
         }
 
         public Player DeletePlayer(int playerId)

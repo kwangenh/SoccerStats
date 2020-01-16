@@ -27,11 +27,12 @@ namespace SoccerStats.Repositories
         }
         public PlayerMatchTime UpdateMatch(PlayerMatchTime thisPlayerMatchTime)
         {
-            if (_context.Matches.Find(thisPlayerMatchTime.Id) != null)
+            if (_context.Players.Find(thisPlayerMatchTime.Id) != null)
             {
-                var updatedPlayerMatchTime = _context.Player_Match_Time.Attach(thisPlayerMatchTime);
-                updatedPlayerMatchTime.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                var matchTime = _context.Player_Match_Time.First(g => g.Id == thisPlayerMatchTime.Id);
+                _context.Entry(matchTime).CurrentValues.SetValues(thisPlayerMatchTime);
                 _context.SaveChanges();
+
                 return thisPlayerMatchTime;
             }
             return thisPlayerMatchTime;

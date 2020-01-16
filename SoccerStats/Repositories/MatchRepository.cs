@@ -32,8 +32,8 @@ namespace SoccerStats.Repositories
         {
             if(_context.Matches.Find(thisMatch.Id) != null)
             {
-                var updatedMatch = _context.Matches.Attach(thisMatch);
-                updatedMatch.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                var updatedMatch = _context.Matches.FirstOrDefault(x => x.Id == thisMatch.Id);
+                _context.Entry(updatedMatch).CurrentValues.SetValues(thisMatch);
                 _context.SaveChanges();
                 return thisMatch;
             }
