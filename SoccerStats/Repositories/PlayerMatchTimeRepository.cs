@@ -23,6 +23,8 @@ namespace SoccerStats.Repositories
         public PlayerMatchTime CreateMatch(PlayerMatchTime thisPlayerMatchTime)
         {
             _context.Player_Match_Time.Add(thisPlayerMatchTime);
+            _context.SaveChanges();
+
             return thisPlayerMatchTime;
         }
         public PlayerMatchTime UpdateMatch(PlayerMatchTime thisPlayerMatchTime)

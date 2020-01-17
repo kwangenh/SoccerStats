@@ -27,6 +27,8 @@ namespace SoccerStats.Repositories
         public Team CreateTeam(Team thisTeam)
         {
             _context.Teams.Add(thisTeam);
+            _context.SaveChanges();
+
             return thisTeam;
         }
         public Team UpdateTeam(Team thisTeam)

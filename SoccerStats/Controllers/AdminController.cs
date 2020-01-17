@@ -33,18 +33,21 @@ namespace SoccerStats.Controllers
             return View(viewModels);
         }
 
-        public ViewResult CreateTeam(AdminCreateTeamViewModel thisTeamViewModel)
+        [HttpPost]
+        public ActionResult CreateTeam(AdminCreateTeamViewModel thisTeamViewModel)
         {
             Team thisTeam = _teamRepository.CreateTeamModel(thisTeamViewModel);
             _teamRepository.CreateTeam(thisTeam);
 
             // call the Teams view after creating this record
-            return Teams();
+            return RedirectToAction("Teams");
         }
 
+        [HttpGet]
         public ViewResult CreateTeam()
         {
-            return View();
+            AdminCreateTeamViewModel viewModel = new AdminCreateTeamViewModel();
+            return View(viewModel);
         }
 
         public ViewResult DeleteTeam(int teamId)
@@ -74,11 +77,12 @@ namespace SoccerStats.Controllers
         }
 
         [HttpPost]
-        public ViewResult CreatePlayer(AdminCreatePlayerViewModel thisPlayer)
+        public ActionResult CreatePlayer(AdminCreatePlayerViewModel thisPlayer)
         {
             thisPlayer.Team = _teamRepository.GetTeamById(thisPlayer.Team.Id);
-            _playerRepository.CreatePlayer(_playerRepository.CreatePlayerModel(thisPlayer));            
-            return CreatePlayer();
+            _playerRepository.CreatePlayer(_playerRepository.CreatePlayerModel(thisPlayer));
+
+            return RedirectToAction("Players");
         }
 
         [HttpGet]
