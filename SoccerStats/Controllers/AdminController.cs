@@ -50,10 +50,11 @@ namespace SoccerStats.Controllers
             return View(viewModel);
         }
 
-        public ViewResult DeleteTeam(int teamId)
+        [HttpPost]
+        public ActionResult DeleteTeam(int id)
         {
-            _teamRepository.DeleteTeam(teamId);
-            return Teams();
+            _teamRepository.DeleteTeam(id);
+            return RedirectToAction("Teams");
         }
 
         [HttpGet]
@@ -64,16 +65,19 @@ namespace SoccerStats.Controllers
         }
 
         [HttpPost]
-        public ViewResult EditTeam(AdminEditTeamViewModel thisTeam)
+        public ActionResult EditTeam(AdminEditTeamViewModel thisTeam)
         {
             _teamRepository.UpdateTeam(_teamRepository.CreateTeamModel(thisTeam));
-            return Teams();
+            
+            return RedirectToAction("Teams");
         }
 
         public ViewResult Players()
         {
             IEnumerable<Player> players = _playerRepository.GetAllPlayers();
-            return View(players);
+            var viewModels = _playerRepository.CreateAdminPlayerViewModels(players);
+
+            return View(viewModels);
         }
 
         [HttpPost]
@@ -96,23 +100,26 @@ namespace SoccerStats.Controllers
             return View(viewModel);
         }
 
-        public ViewResult DeletePlayer(int playerId)
+        public ActionResult DeletePlayer(int id)
         {
-            _playerRepository.DeletePlayer(playerId);
-            return Players();
+            _playerRepository.DeletePlayer(id);
+
+            return RedirectToAction("Players");
         }
         
+        [HttpGet]
         public ViewResult EditPlayer(int id)
         {
             AdminEditPlayerViewModel thisViewModel = _playerRepository.CreateAdminEditPlayerViewModel(_playerRepository.GetPlayerById(id));
             return View(thisViewModel);
         }
 
-        public ViewResult EditPlayer(AdminEditPlayerViewModel thisViewModel)
+        [HttpPost]
+        public ActionResult EditPlayer(AdminEditPlayerViewModel thisViewModel)
         {
             Player thisPlayer = _playerRepository.CreatePlayerModel(thisViewModel);
             _playerRepository.UpdatePlayer(thisPlayer);
-            return Players();
+            return RedirectToAction("Players");
         }
 
         public ViewResult Matches()
@@ -134,10 +141,10 @@ namespace SoccerStats.Controllers
             return Matches();
         }
 
-        public ViewResult DeleteMatch(int matchId)
+        public ActionResult DeleteMatch(int matchId)
         {
             _matchRepository.DeleteMatch(matchId);
-            return Matches();
+            return RedirectToAction("Matches");
         }
 
         public ViewResult EditMatch(int id)
@@ -146,10 +153,10 @@ namespace SoccerStats.Controllers
             return View(thisMatch);
         }
 
-        public ViewResult EditMatch(Match thisMatch)
+        public ActionResult EditMatch(Match thisMatch)
         {
             _matchRepository.UpdateMatch(thisMatch);
-            return Matches();
+            return RedirectToAction("Mathces");
         }
     }
 }

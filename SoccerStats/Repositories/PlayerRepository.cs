@@ -104,7 +104,8 @@ namespace SoccerStats.Repositories
                 Birthday = thisPlayer.Birthday,
                 FirstName = thisPlayer.FirstName,
                 LastName = thisPlayer.LastName,
-                Team = thisPlayer.Team
+                Team = thisPlayer.Team,
+                AvailableTeams = new List<SelectListItem>()
             };
             var teams = _context.Teams.ToList();
 
@@ -114,6 +115,32 @@ namespace SoccerStats.Repositories
             }
 
             return viewModel;
+        }
+
+        public AdminPlayersViewModel CreateAdminPlayerViewModel(Player thisPlayer)
+        {
+            AdminPlayersViewModel viewModel = new AdminPlayersViewModel
+            {
+                Id = thisPlayer.Id,
+                Birthday = thisPlayer.Birthday,
+                FirstName = thisPlayer.FirstName,
+                LastName = thisPlayer.LastName,
+                Team = thisPlayer.Team
+            };
+
+            return viewModel;
+        }
+
+        public List<AdminPlayersViewModel> CreateAdminPlayerViewModels(IEnumerable<Player> players)
+        {
+            List<AdminPlayersViewModel> viewModels = new List<AdminPlayersViewModel>();
+
+            foreach(var player in players)
+            {
+                viewModels.Add(CreateAdminPlayerViewModel(player));
+            }
+
+            return viewModels;
         }
     }
 }

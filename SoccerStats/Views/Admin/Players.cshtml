@@ -3,5 +3,28 @@
     ViewData["Title"] = "Players";
 }
 
-<h1>Players</h1>
+<h1>Admin Players View</h1>
 
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Teams(broken)</th>
+        <th>Birthday</th>
+    </tr>
+    @foreach (var player in Model)
+    {
+        <tr>
+            <th>@player.FirstName @player.LastName</th>
+            <th>@player.Number</th>
+            <th>@player.Team</th>
+            <th>@player.Birthday</th>            
+            <th><a asp-controller="Admin" asp-action="EditPlayer" asp-route-id="@player.Id" method="get">Edit</a></th>
+            <th>
+                <form method="post" asp-controller="Admin" asp-action="DeletePlayer" asp-route-id="@player.Id">
+                    <button class="btn btn-danger order-button">Delete</button>
+                </form>
+            </th>
+        </tr>
+    }
+</table>

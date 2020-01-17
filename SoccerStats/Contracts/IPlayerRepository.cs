@@ -19,6 +19,9 @@ namespace SoccerStats.Contracts
         public Player CreatePlayerModel(AdminCreatePlayerViewModel viewModel);
         public AdminCreatePlayerViewModel CreateAdminCreatePlayerViewModel(Player thisPlayer);
         public AdminEditPlayerViewModel CreateAdminEditPlayerViewModel(Player thisPlayer);
+        public List<AdminPlayersViewModel> CreateAdminPlayerViewModels(IEnumerable<Player> players);
+        public AdminPlayersViewModel CreateAdminPlayerViewModel(Player thisPlayer);
+
 
     }
 }

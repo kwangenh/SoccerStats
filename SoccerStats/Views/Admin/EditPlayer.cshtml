@@ -3,5 +3,59 @@
     ViewData["Title"] = "EditPlayer";
 }
 
-<h1>EditPlayer</h1>
+<h1>Edit Player</h1>
 
+<p>@Model.FirstName</p>
+<form method="post" asp-controller="Admin" asp-action="EditPlayer">
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-9">
+            <ul data-role="listview">
+                <li>
+                    <input asp-for="Id" />
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" class="form-control form-control-sm" />
+                        <span asp-validation-for="FirstName"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" class="form-control form-control-sm" />
+                        <span asp-validation-for="LastName"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Birthday"></label>
+                        <input asp-for="Birthday" class="form-control form-control-sm" />
+                        <span asp-validation-for="Birthday"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Number"></label>
+                        <input asp-for="Number" class="form-control form-control-sm" />
+                        <span asp-validation-for="Number"></span>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="form-group">
+                        <label asp-for="Team"></label>
+                        <select asp-for="Team.Id"
+                                asp-items="Model.AvailableTeams">
+                            <option>Please select one</option>
+                        </select>                        
+                    </div>
+                </li>                
+            </ul>
+            <p class="actions">
+                <button class="btn btn-danger order-button">Update Team</button>
+            </p>
+        </div>
+    </div>
+</form>
