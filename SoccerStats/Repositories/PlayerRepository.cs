@@ -125,7 +125,8 @@ namespace SoccerStats.Repositories
                 Birthday = thisPlayer.Birthday,
                 FirstName = thisPlayer.FirstName,
                 LastName = thisPlayer.LastName,
-                Team = thisPlayer.Team
+                Team = thisPlayer.Team,
+                Number = thisPlayer.Number
             };
 
             return viewModel;

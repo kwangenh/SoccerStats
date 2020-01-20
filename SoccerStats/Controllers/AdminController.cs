@@ -107,7 +107,7 @@ namespace SoccerStats.Controllers
             return RedirectToAction("Players");
         }
         
-        [HttpGet]
+        [HttpGet]   
         public ViewResult EditPlayer(int id)
         {
             AdminEditPlayerViewModel thisViewModel = _playerRepository.CreateAdminEditPlayerViewModel(_playerRepository.GetPlayerById(id));
