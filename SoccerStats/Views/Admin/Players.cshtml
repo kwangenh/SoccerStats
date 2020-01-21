@@ -18,7 +18,7 @@
         <tr>
             <th>@player.FirstName @player.LastName</th>
             <th>@player.Number</th>
-            <th>@player.Team</th>
+            <th>@player.Team.Name</th>
             <th>@player.Birthday</th>            
             <th><a asp-controller="Admin" asp-action="EditPlayer" asp-route-id="@player.Id" method="get">Edit</a></th>
             <th>

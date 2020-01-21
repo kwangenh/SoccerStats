@@ -14,12 +14,16 @@ namespace SoccerStats.ViewModels.Admin.Players
     {
         public AdminCreatePlayerViewModel() { }
 
+        [Required(ErrorMessage = "Enter a First Name")]
         [DisplayName("First Name")]
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "Enter a Last Name")]
         [DisplayName("Last Name")]
         public string LastName {get; set; }
+        [Required(ErrorMessage = "Enter a Birthday")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Birthday { get; set; }
+        [Required(ErrorMessage ="Select a Team")]
         public Team Team { get; set; }
         public int Number { get; set; }
         public List<SelectListItem> AvailableTeams { get; set; }

@@ -81,12 +81,19 @@ namespace SoccerStats.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreatePlayer(AdminCreatePlayerViewModel thisPlayer)
+        public ActionResult CreatePlayer(AdminCreatePlayerViewModel playerViewModel)
         {
-            thisPlayer.Team = _teamRepository.GetTeamById(thisPlayer.Team.Id);
-            _playerRepository.CreatePlayer(_playerRepository.CreatePlayerModel(thisPlayer));
+            playerViewModel.Team = _teamRepository.GetTeamById(playerViewModel.Team.Id);            
 
-            return RedirectToAction("Players");
+            if (ModelState.IsValid)
+            {
+                var thisPlayer = _playerRepository.CreatePlayerModel(playerViewModel);
+                _playerRepository.CreatePlayer(thisPlayer);
+                return RedirectToAction("Players");
+            }
+            
+
+            return View(playerViewModel);
         }
 
         [HttpGet]

@@ -6,6 +6,7 @@ using SoccerStats.Models;
 using SoccerStats.Contracts;
 using SoccerStats.ViewModels.Admin.Players;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace SoccerStats.Repositories
 {
@@ -54,7 +55,8 @@ namespace SoccerStats.Repositories
 
         public IEnumerable<Player> GetAllPlayers()
         {
-            return _context.Players;
+            return _context.Players
+                .Include(player => player.Team);   
         }        
 
         public Player CreatePlayerModel(AdminEditPlayerViewModel viewModel)
